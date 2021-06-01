@@ -1,0 +1,24 @@
+---
+# tasks file for yumconfigure
+
+
+- mount:
+        fstype: "iso9660"
+        state: mounted
+        src: "/dev/sr0"
+        path: "/run/media/root/RHEL-8-3-0-BaseOS-x86_64"
+- yum_repository:
+        baseurl: "/run/media/root/RHEL-8-3-0-BaseOS-x86_64/AppStream"     
+        description: "yum for AppStream "
+        gpgcheck: no
+        mode: 0644
+        name: appStream
+        state: present
+- yum_repository:
+        baseurl: "/run/media/root/RHEL-8-3-0-BaseOS-x86_64/BaseOS" 
+        description: "yum for BaseOS "
+        gpgcheck: no
+        mode: 0644
+        name: baseOS
+        state: present
+
